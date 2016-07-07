@@ -2,27 +2,41 @@
 
 void ofApp::setup(){
     ofSetWindowTitle("MiniMilumin");
-    ofSetWindowShape(800, 600);
+    ofSetWindowShape(DEFAULT_WINDOW_WIDTH, DEFAULT_WINDOW_HEIGHT);
     ofSetFrameRate(60);
     
-    //ofDisableArbTex();
+    ofEnableAntiAliasing();
     
     client.setup();
-    client.setServerName("Dranimate_Syphon_1");
-    
-    mesh.load("square.ply");
-    for(int i = 0; i < mesh.getVertices().size(); i++) {
-        ofVec3f v = mesh.getVertex(i);
-        v.x *= 600;
-        v.y *= 600;
-        v.z *= 600;
-        mesh.setVertex(i, v);
-        mesh.addTexCoord(v);
-    }
+    client.setServerName(SYPHON_SERVER_NAME);
     
     test.load("test.jpg");
     
     hoveredOverVertexIndex = -1;
+    
+    // Top left corner
+    originalCorners [0].set(INITIAL_DISPLAY_OFFSET_X,
+                            INITIAL_DISPLAY_OFFSET_Y);
+    distortedCorners[0].set(INITIAL_DISPLAY_OFFSET_X,
+                            INITIAL_DISPLAY_OFFSET_Y);
+    
+    // Top right corner
+    originalCorners [1].set(DEFAULT_WINDOW_WIDTH - INITIAL_DISPLAY_OFFSET_X,
+                            INITIAL_DISPLAY_OFFSET_X);
+    distortedCorners[1].set(DEFAULT_WINDOW_WIDTH - INITIAL_DISPLAY_OFFSET_X,
+                            INITIAL_DISPLAY_OFFSET_X);
+    
+    // Bottom right corner
+    originalCorners [2].set(DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X,
+                            DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
+    distortedCorners[2].set(DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X,
+                            DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
+    
+    // Bottom left corner
+    originalCorners [3].set(INITIAL_DISPLAY_OFFSET_X,
+                            DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
+    distortedCorners[3].set(INITIAL_DISPLAY_OFFSET_X,
+                            DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
 }
 
 void ofApp::update(){
@@ -30,59 +44,91 @@ void ofApp::update(){
 }
 
 void ofApp::draw(){
-    client.draw(0, 0);
     
     ofBackground(0, 0, 0);
     ofColor(255, 255, 255, 255);
     ofEnableAlphaBlending();
     
-    ofSetColor(255,255,255,255);
     ofPushMatrix(); {
-        //ofTranslate(0, 200);
-        //ofRotate(180, 1, 0, 0);
+        ofMultMatrix(homography);
         
-        client.getTexture().bind();
-        mesh.drawFaces();
-        client.getTexture().unbind();
+        ofSetColor(255, 255, 255);
+        if(drawTestImage) {
+            drawGrid(INITIAL_DISPLAY_OFFSET_X,
+                     INITIAL_DISPLAY_OFFSET_Y,
+                     20,
+                     20,
+                     DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
+                     DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
+        } else {
+            client.draw(INITIAL_DISPLAY_OFFSET_X,
+                        INITIAL_DISPLAY_OFFSET_Y,
+                        DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
+                        DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
+        }
     } ofPopMatrix();
     
-    mesh.drawWireframe();
-    
     if(hoveredOverVertexIndex != -1) {
-        ofVec3f v = mesh.getVertex(hoveredOverVertexIndex);
+        ofVec3f v = distortedCorners[hoveredOverVertexIndex];
         ofSetColor(255,255,255);
-        ofDrawCircle(v.x, v.y, 5);
+        ofDrawCircle(v.x, v.y, SELECTED_VERTEX_CIRCLE_SIZE);
     }
     
 }
 
-void ofApp::keyPressed(int key){
+void ofApp::drawGrid (int xPos, int yPos, int xDivs, int yDivs, int w, int h) {
+    for(int x = 0; x <= xDivs; x++) {
+        ofDrawLine(xPos + (x * w / xDivs), yPos,
+                   xPos + (x * w / xDivs), yPos + h);
+    }
+    for(int y = 0; y <= yDivs; y++) {
+        ofDrawLine(xPos,     yPos + (y * h / yDivs),
+                   xPos + w, yPos + (y * h / yDivs));
+    }
+}
+
+void ofApp::keyPressed (int key) {
+    
     /* Toggle fullscreen */
     if (key == 'f') {
         ofToggleFullscreen();
     }
-}
+    
+    /* Refresh syphon input */
+    if (key == 'r') {
+        client.setup();
+        client.setServerName(SYPHON_SERVER_NAME);
+    }
 
-void ofApp::keyReleased(int key){
+    /* Toggle show test image */
+    if (key == 't') {
+        drawTestImage = !drawTestImage;
+    }
     
 }
 
-void ofApp::mouseMoved(int x, int y ) {
+void ofApp::keyReleased (int key) {
+    
+}
+
+void ofApp::mouseMoved (int x, int y) {
     hoveredOverVertexIndex = -1;
     
-    for(int i = 0; i < mesh.getVertices().size(); i++) {
-        ofVec2f v = mesh.getVertex(i);
+    for(int i = 0; i < 4; i++) {
+        ofVec2f v = distortedCorners[i];
         ofVec2f m = ofVec2f(x,y);
         float d = v.distance(m);
-        if(d < 10) {
+        if(d < VERTEX_SELECT_THRESHOLD) {
             hoveredOverVertexIndex = i;
         }
     }
+    
 }
 
 void ofApp::mouseDragged(int x, int y, int button){
     if(hoveredOverVertexIndex != -1) {
-        mesh.setVertex(hoveredOverVertexIndex, ofVec3f(x,y));
+        distortedCorners[hoveredOverVertexIndex].set(x, y);
+        homography = ofxHomography::findHomography(originalCorners, distortedCorners);
     }
 }
 

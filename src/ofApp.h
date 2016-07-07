@@ -2,6 +2,19 @@
 
 #include "ofMain.h"
 #include "ofxSyphon.h"
+#include "ofxHomography.h"
+
+#define SYPHON_SERVER_NAME "Dranimate_Syphon_1"
+
+#define DEFAULT_WINDOW_WIDTH 1440
+#define DEFAULT_WINDOW_HEIGHT 900
+
+#define INITIAL_DISPLAY_OFFSET_X 50
+#define INITIAL_DISPLAY_OFFSET_Y 50
+
+#define VERTEX_SELECT_THRESHOLD 50
+
+#define SELECTED_VERTEX_CIRCLE_SIZE 10
 
 class ofApp : public ofBaseApp{
 
@@ -9,6 +22,8 @@ public:
     void setup();
     void update();
     void draw();
+    
+    void drawGrid(int xPos, int yPos, int xDivs, int yDivs, int w, int h);
 
     void keyPressed(int key);
     void keyReleased(int key);
@@ -22,14 +37,13 @@ public:
 
     ofxSyphonClient client;
     
-    ofMesh mesh;
-    
-    ofFbo fbo;
-    
     ofImage test;
+    
+    bool drawTestImage;
     
     int hoveredOverVertexIndex;
     
-    float xrot;
-    float yrot;
+    ofPoint originalCorners[4];
+    ofPoint distortedCorners[4];
+    ofMatrix4x4 homography;
 };
