@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>EBAA01E7-BF9C-45CE-917D-74D11B867306</string>
+	<key>IDESourceControlProjectName</key>
+	<string>minimilumin</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6453F47D4FAE769FDE4239E736959B67DFD8D67F</key>
+		<string>https://github.com/cmuartfab/ofxminimillumin.git</string>
+		<key>804365A2A03AE91D0A94F46F33BFBBDE49154A3B</key>
+		<string>https://github.com/paulobarcelos/ofxHomography</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>minimilumin.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6453F47D4FAE769FDE4239E736959B67DFD8D67F</key>
+		<string>../..</string>
+		<key>804365A2A03AE91D0A94F46F33BFBBDE49154A3B</key>
+		<string>../../../../../addons/ofxHomography</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cmuartfab/ofxminimillumin.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6453F47D4FAE769FDE4239E736959B67DFD8D67F</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6453F47D4FAE769FDE4239E736959B67DFD8D67F</string>
+			<key>IDESourceControlWCCName</key>
+			<string>minimilumin</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>804365A2A03AE91D0A94F46F33BFBBDE49154A3B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ofxHomography</string>
+		</dict>
+	</array>
+</dict>
+</plist>
