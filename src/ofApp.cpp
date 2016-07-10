@@ -7,8 +7,11 @@ void ofApp::setup(){
     
     ofEnableAntiAliasing();
     
-    client.setup();
-    client.setServerName(SYPHON_SERVER_NAME);
+    puppetStageClient.setup();
+    puppetStageClient.setServerName(PUPPET_STAGE_SYPHON_NAME);
+    
+    puppetParadePathClient.setup();
+    puppetParadePathClient.setServerName(PUPPET_PARADE_PATH_SYPHON_NAME);
     
     test.load("test.jpg");
     
@@ -60,11 +63,18 @@ void ofApp::draw(){
                      20,
                      DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
                      DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
+        } else if (drawPuppetParadePath) {
+            puppetParadePathClient
+                .draw(INITIAL_DISPLAY_OFFSET_X,
+                      INITIAL_DISPLAY_OFFSET_Y,
+                      DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
+                      DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
         } else {
-            client.draw(INITIAL_DISPLAY_OFFSET_X,
-                        INITIAL_DISPLAY_OFFSET_Y,
-                        DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
-                        DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
+            puppetStageClient
+                .draw(INITIAL_DISPLAY_OFFSET_X,
+                      INITIAL_DISPLAY_OFFSET_Y,
+                      DEFAULT_WINDOW_WIDTH  - INITIAL_DISPLAY_OFFSET_X * 2,
+                      DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y * 2);
         }
     } ofPopMatrix();
     
@@ -96,13 +106,33 @@ void ofApp::keyPressed (int key) {
     
     /* Refresh syphon input */
     if (key == 'r') {
-        client.setup();
-        client.setServerName(SYPHON_SERVER_NAME);
+        puppetStageClient.setup();
+        puppetStageClient.setServerName(PUPPET_STAGE_SYPHON_NAME);
+        
+        puppetParadePathClient.setup();
+        puppetParadePathClient.setServerName(PUPPET_PARADE_PATH_SYPHON_NAME);
     }
 
     /* Toggle show test image */
     if (key == 't') {
-        drawTestImage = !drawTestImage;
+        if(!drawTestImage) {
+            drawTestImage = true;
+            drawPuppetParadePath = false;
+        } else {
+            drawTestImage = false;
+            drawPuppetParadePath = false;
+        }
+    }
+    
+    /* Toggle show parade path */
+    if (key == 'p') {
+        if(!drawPuppetParadePath) {
+            drawPuppetParadePath = true;
+            drawTestImage = false;
+        } else {
+            drawPuppetParadePath = false;
+            drawTestImage = false;
+        }
     }
     
 }

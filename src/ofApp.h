@@ -4,7 +4,8 @@
 #include "ofxSyphon.h"
 #include "ofxHomography.h"
 
-#define SYPHON_SERVER_NAME "Dranimate_Syphon_1"
+#define PUPPET_STAGE_SYPHON_NAME "Dranimate_Syphon_1"
+#define PUPPET_PARADE_PATH_SYPHON_NAME "Dranimate_PuppetParadePath"
 
 #define DEFAULT_WINDOW_WIDTH 1440
 #define DEFAULT_WINDOW_HEIGHT 900
@@ -35,11 +36,13 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
 
-    ofxSyphonClient client;
+    ofxSyphonClient puppetStageClient;
+    ofxSyphonClient puppetParadePathClient;
     
     ofImage test;
     
     bool drawTestImage;
+    bool drawPuppetParadePath;
     
     int hoveredOverVertexIndex;
     

@@ -22,7 +22,7 @@
 		<key>6453F47D4FAE769FDE4239E736959B67DFD8D67F</key>
 		<string>../..</string>
 		<key>804365A2A03AE91D0A94F46F33BFBBDE49154A3B</key>
-		<string>../../../../../addons/ofxHomography</string>
+		<string>../../../addons/ofxHomography</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/cmuartfab/ofxminimillumin.git</string>
