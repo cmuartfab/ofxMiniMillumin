@@ -7,9 +7,6 @@ void ofApp::setup(){
     
     ofEnableAntiAliasing();
     
-    puppetStageClient.setup();
-    puppetStageClient.setServerName(PUPPET_STAGE_SYPHON_NAME);
-    
     puppetParadePathClient.setup();
     puppetParadePathClient.setServerName(PUPPET_PARADE_PATH_SYPHON_NAME);
     
@@ -40,6 +37,38 @@ void ofApp::setup(){
                             DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
     distortedCorners[3].set(INITIAL_DISPLAY_OFFSET_X,
                             DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
+    
+    gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
+    gui->setAutoDraw(true);
+    gui->onButtonEvent(this, &ofApp::onButtonEvent);
+    
+    dir.setup();
+    ofAddListener(dir.events.serverAnnounced, this, &ofApp::serverAnnounced);
+    ofAddListener(dir.events.serverRetired, this, &ofApp::serverRetired);
+    
+    dir.refresh(true);
+    vector<ofxSyphonServerDescription> list = dir.getServerList();
+    for(int i = 0; i < list.size(); i++) {
+        ofLog() << list[i].serverName;
+    }
+}
+
+void ofApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg){
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+        //if(gui->getButton(dir.serverName) == NULL) { //doesn't work
+            gui->addButton(dir.serverName);
+            gui->getButton(dir.serverName)->setVisible(true);
+        //}
+
+    }
+}
+
+void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg){
+    for( auto& dir : arg.servers ){
+        ofLogNotice("ofxSyphonServerDirectory Server Announced")<<" Server Name: "<<dir.serverName <<" | App Name: "<<dir.appName;
+        gui->getButton(dir.serverName)->setVisible(false);
+    }
 }
 
 void ofApp::update(){
@@ -82,6 +111,10 @@ void ofApp::draw(){
         ofVec3f v = distortedCorners[hoveredOverVertexIndex];
         ofSetColor(255,255,255);
         ofDrawCircle(v.x, v.y, SELECTED_VERTEX_CIRCLE_SIZE);
+    }
+    
+    if(drawGui) {
+        gui->draw();
     }
     
 }
@@ -135,6 +168,11 @@ void ofApp::keyPressed (int key) {
         }
     }
     
+    /* Toggle draw GUI */
+    if (key == 'g') {
+        drawGui = !drawGui;
+    }
+    
 }
 
 void ofApp::keyReleased (int key) {
@@ -180,4 +218,17 @@ void ofApp::gotMessage(ofMessage msg){
 
 void ofApp::dragEvent(ofDragInfo dragInfo){
     
+}
+
+void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
+    if(e.target->getName() == "syphon input") {
+        puppetStageClient.setup();
+        puppetStageClient.setServerName(e.target->getLabel());
+    }
+}
+
+void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
+    puppetStageClient.setup();
+    puppetStageClient.setServerName(e.target->getLabel());
+    ofLog() << e.target->getLabel();
 }

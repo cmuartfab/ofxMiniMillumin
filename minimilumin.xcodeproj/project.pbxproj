@@ -13,6 +13,9 @@
 		DF3C60951D2C5F0C009002A2 /* Syphon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF3C608C1D2C5F0C009002A2 /* Syphon.framework */; };
 		DF3C60961D2C5F0C009002A2 /* Syphon.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF3C608C1D2C5F0C009002A2 /* Syphon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF3C60971D2C5F0C009002A2 /* SyphonNameboundClient.m in Sources */ = {isa = PBXBuildFile; fileRef = DF3C608F1D2C5F0C009002A2 /* SyphonNameboundClient.m */; };
+		DFABFE141D4669C9005CA335 /* ofxDatGuiComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFABFE061D4669C9005CA335 /* ofxDatGuiComponent.cpp */; };
+		DFABFE151D4669C9005CA335 /* ofxSmartFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFABFE0D1D4669C9005CA335 /* ofxSmartFont.cpp */; };
+		DFABFE161D4669C9005CA335 /* ofxDatGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DFABFE0F1D4669C9005CA335 /* ofxDatGui.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
@@ -60,6 +63,30 @@
 		DF3C608E1D2C5F0C009002A2 /* SyphonNameboundClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SyphonNameboundClient.h; sourceTree = "<group>"; };
 		DF3C608F1D2C5F0C009002A2 /* SyphonNameboundClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SyphonNameboundClient.m; sourceTree = "<group>"; };
 		DF3C61361D2D97A8009002A2 /* ofxHomography.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxHomography.h; sourceTree = "<group>"; };
+		DFABFDF81D4669C9005CA335 /* ofxDatGui2dPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGui2dPad.h; sourceTree = "<group>"; };
+		DFABFDF91D4669C9005CA335 /* ofxDatGuiButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiButton.h; sourceTree = "<group>"; };
+		DFABFDFA1D4669C9005CA335 /* ofxDatGuiColorPicker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiColorPicker.h; sourceTree = "<group>"; };
+		DFABFDFB1D4669C9005CA335 /* ofxDatGuiControls.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiControls.h; sourceTree = "<group>"; };
+		DFABFDFC1D4669C9005CA335 /* ofxDatGuiFRM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiFRM.h; sourceTree = "<group>"; };
+		DFABFDFD1D4669C9005CA335 /* ofxDatGuiGroups.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiGroups.h; sourceTree = "<group>"; };
+		DFABFDFE1D4669C9005CA335 /* ofxDatGuiLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiLabel.h; sourceTree = "<group>"; };
+		DFABFDFF1D4669C9005CA335 /* ofxDatGuiMatrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiMatrix.h; sourceTree = "<group>"; };
+		DFABFE001D4669C9005CA335 /* ofxDatGuiScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiScrollView.h; sourceTree = "<group>"; };
+		DFABFE011D4669C9005CA335 /* ofxDatGuiSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiSlider.h; sourceTree = "<group>"; };
+		DFABFE021D4669C9005CA335 /* ofxDatGuiTextInput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiTextInput.h; sourceTree = "<group>"; };
+		DFABFE031D4669C9005CA335 /* ofxDatGuiTextInputField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiTextInputField.h; sourceTree = "<group>"; };
+		DFABFE041D4669C9005CA335 /* ofxDatGuiTimeGraph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiTimeGraph.h; sourceTree = "<group>"; };
+		DFABFE061D4669C9005CA335 /* ofxDatGuiComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDatGuiComponent.cpp; sourceTree = "<group>"; };
+		DFABFE071D4669C9005CA335 /* ofxDatGuiComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiComponent.h; sourceTree = "<group>"; };
+		DFABFE081D4669C9005CA335 /* ofxDatGuiConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiConstants.h; sourceTree = "<group>"; };
+		DFABFE091D4669C9005CA335 /* ofxDatGuiEvents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiEvents.h; sourceTree = "<group>"; };
+		DFABFE0A1D4669C9005CA335 /* ofxDatGuiIntObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiIntObject.h; sourceTree = "<group>"; };
+		DFABFE0D1D4669C9005CA335 /* ofxSmartFont.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSmartFont.cpp; sourceTree = "<group>"; };
+		DFABFE0E1D4669C9005CA335 /* ofxSmartFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxSmartFont.h; sourceTree = "<group>"; };
+		DFABFE0F1D4669C9005CA335 /* ofxDatGui.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDatGui.cpp; sourceTree = "<group>"; };
+		DFABFE101D4669C9005CA335 /* ofxDatGui.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGui.h; sourceTree = "<group>"; };
+		DFABFE121D4669C9005CA335 /* ofxDatGuiTheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiTheme.h; sourceTree = "<group>"; };
+		DFABFE131D4669C9005CA335 /* ofxDatGuiThemes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxDatGuiThemes.h; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E4B69B5B0A3A1756003C02F2 /* minimiluminDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = minimiluminDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
@@ -95,6 +122,7 @@
 			children = (
 				DF3C607F1D2C5F0C009002A2 /* ofxSyphon */,
 				DF3C61341D2D97A8009002A2 /* ofxHomography */,
+				DFABFDF51D4669C9005CA335 /* ofxDatGui */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -181,6 +209,86 @@
 			);
 			name = src;
 			path = ../../../addons/ofxHomography/src;
+			sourceTree = "<group>";
+		};
+		DFABFDF51D4669C9005CA335 /* ofxDatGui */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFDF61D4669C9005CA335 /* src */,
+			);
+			name = ofxDatGui;
+			sourceTree = "<group>";
+		};
+		DFABFDF61D4669C9005CA335 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFDF71D4669C9005CA335 /* components */,
+				DFABFE051D4669C9005CA335 /* core */,
+				DFABFE0B1D4669C9005CA335 /* libs */,
+				DFABFE0F1D4669C9005CA335 /* ofxDatGui.cpp */,
+				DFABFE101D4669C9005CA335 /* ofxDatGui.h */,
+				DFABFE111D4669C9005CA335 /* themes */,
+			);
+			name = src;
+			path = ../../../addons/ofxDatGui/src;
+			sourceTree = "<group>";
+		};
+		DFABFDF71D4669C9005CA335 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFDF81D4669C9005CA335 /* ofxDatGui2dPad.h */,
+				DFABFDF91D4669C9005CA335 /* ofxDatGuiButton.h */,
+				DFABFDFA1D4669C9005CA335 /* ofxDatGuiColorPicker.h */,
+				DFABFDFB1D4669C9005CA335 /* ofxDatGuiControls.h */,
+				DFABFDFC1D4669C9005CA335 /* ofxDatGuiFRM.h */,
+				DFABFDFD1D4669C9005CA335 /* ofxDatGuiGroups.h */,
+				DFABFDFE1D4669C9005CA335 /* ofxDatGuiLabel.h */,
+				DFABFDFF1D4669C9005CA335 /* ofxDatGuiMatrix.h */,
+				DFABFE001D4669C9005CA335 /* ofxDatGuiScrollView.h */,
+				DFABFE011D4669C9005CA335 /* ofxDatGuiSlider.h */,
+				DFABFE021D4669C9005CA335 /* ofxDatGuiTextInput.h */,
+				DFABFE031D4669C9005CA335 /* ofxDatGuiTextInputField.h */,
+				DFABFE041D4669C9005CA335 /* ofxDatGuiTimeGraph.h */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		DFABFE051D4669C9005CA335 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFE061D4669C9005CA335 /* ofxDatGuiComponent.cpp */,
+				DFABFE071D4669C9005CA335 /* ofxDatGuiComponent.h */,
+				DFABFE081D4669C9005CA335 /* ofxDatGuiConstants.h */,
+				DFABFE091D4669C9005CA335 /* ofxDatGuiEvents.h */,
+				DFABFE0A1D4669C9005CA335 /* ofxDatGuiIntObject.h */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
+		DFABFE0B1D4669C9005CA335 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFE0C1D4669C9005CA335 /* ofxSmartFont */,
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		DFABFE0C1D4669C9005CA335 /* ofxSmartFont */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFE0D1D4669C9005CA335 /* ofxSmartFont.cpp */,
+				DFABFE0E1D4669C9005CA335 /* ofxSmartFont.h */,
+			);
+			path = ofxSmartFont;
+			sourceTree = "<group>";
+		};
+		DFABFE111D4669C9005CA335 /* themes */ = {
+			isa = PBXGroup;
+			children = (
+				DFABFE121D4669C9005CA335 /* ofxDatGuiTheme.h */,
+				DFABFE131D4669C9005CA335 /* ofxDatGuiThemes.h */,
+			);
+			path = themes;
 			sourceTree = "<group>";
 		};
 		E4328144138ABC890047C5CB /* Products */ = {
@@ -314,8 +422,11 @@
 				DF3C60971D2C5F0C009002A2 /* SyphonNameboundClient.m in Sources */,
 				DF3C60941D2C5F0C009002A2 /* ofxSyphonServerDirectory.mm in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
+				DFABFE151D4669C9005CA335 /* ofxSmartFont.cpp in Sources */,
 				DF3C60921D2C5F0C009002A2 /* ofxSyphonClient.mm in Sources */,
+				DFABFE141D4669C9005CA335 /* ofxDatGuiComponent.cpp in Sources */,
 				DF3C60931D2C5F0C009002A2 /* ofxSyphonServer.mm in Sources */,
+				DFABFE161D4669C9005CA335 /* ofxDatGui.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
