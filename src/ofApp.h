@@ -41,6 +41,8 @@ public:
     void gotMessage(ofMessage msg);
     void onDropdownEvent(ofxDatGuiDropdownEvent e);
     void onButtonEvent(ofxDatGuiButtonEvent e);
+    void moveHomCornerPos(int i, int dx, int dy);
+    void setHomCornerPos(int i, int x, int y);
 
     ofxSyphonClient puppetStageClient;
     ofxSyphonClient puppetParadePathClient;
@@ -60,4 +62,15 @@ public:
     ofxDatGui *gui;
     
     ofxSyphonServerDirectory dir;
+    
+    bool shiftKeyDown;
+    bool oneKeyDown;
+    bool twoKeyDown;
+    bool threeKeyDown;
+    bool fourKeyDown;
+    bool upKeyDown;
+    bool rightKeyDown;
+    bool downKeyDown;
+    bool leftKeyDown;
+    
 };

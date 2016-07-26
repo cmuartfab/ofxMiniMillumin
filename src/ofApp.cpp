@@ -73,6 +73,30 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg){
 
 void ofApp::update(){
     gui->update();
+    
+    int moveCornerIndex = -1;
+    
+    if(oneKeyDown)   moveCornerIndex = 0;
+    if(twoKeyDown)   moveCornerIndex = 1;
+    if(threeKeyDown) moveCornerIndex = 2;
+    if(fourKeyDown)  moveCornerIndex = 3;
+    
+    if(moveCornerIndex != -1) {
+        if(upKeyDown)    moveHomCornerPos(moveCornerIndex, 0, -2);
+        if(downKeyDown)  moveHomCornerPos(moveCornerIndex, 0, 2);
+        if(leftKeyDown)  moveHomCornerPos(moveCornerIndex, -2, 0);
+        if(rightKeyDown) moveHomCornerPos(moveCornerIndex, 2, 0);
+    }
+}
+
+void ofApp::moveHomCornerPos(int i, int dx, int dy) {
+    distortedCorners[i].set(distortedCorners[i].x + dx, distortedCorners[i].y + dy);
+    homography = ofxHomography::findHomography(originalCorners, distortedCorners);
+}
+
+void ofApp::setHomCornerPos(int i, int x, int y) {
+    distortedCorners[i].set(x, y);
+    homography = ofxHomography::findHomography(originalCorners, distortedCorners);
 }
 
 void ofApp::draw(){
@@ -173,10 +197,29 @@ void ofApp::keyPressed (int key) {
         drawGui = !drawGui;
     }
     
+    /* Keys for controlling corners */
+    if(key == OF_KEY_SHIFT) shiftKeyDown = true;
+    if(key == OF_KEY_UP) upKeyDown = true;
+    if(key == OF_KEY_DOWN) downKeyDown = true;
+    if(key == OF_KEY_LEFT) leftKeyDown = true;
+    if(key == OF_KEY_RIGHT) rightKeyDown = true;
+    if(key == '1') oneKeyDown = true;
+    if(key == '2') twoKeyDown = true;
+    if(key == '3') threeKeyDown = true;
+    if(key == '4') fourKeyDown = true;
+    
 }
 
 void ofApp::keyReleased (int key) {
-    
+    if(key == OF_KEY_SHIFT) shiftKeyDown = false;
+    if(key == OF_KEY_UP) upKeyDown = false;
+    if(key == OF_KEY_DOWN) downKeyDown = false;
+    if(key == OF_KEY_LEFT) leftKeyDown = false;
+    if(key == OF_KEY_RIGHT) rightKeyDown = false;
+    if(key == '1') oneKeyDown = false;
+    if(key == '2') twoKeyDown = false;
+    if(key == '3') threeKeyDown = false;
+    if(key == '4') fourKeyDown = false;
 }
 
 void ofApp::mouseMoved (int x, int y) {
@@ -195,8 +238,7 @@ void ofApp::mouseMoved (int x, int y) {
 
 void ofApp::mouseDragged(int x, int y, int button){
     if(hoveredOverVertexIndex != -1) {
-        distortedCorners[hoveredOverVertexIndex].set(x, y);
-        homography = ofxHomography::findHomography(originalCorners, distortedCorners);
+        setHomCornerPos(hoveredOverVertexIndex, x, y);
     }
 }
 
