@@ -8,8 +8,8 @@
 #define PUPPET_STAGE_SYPHON_NAME "Dranimate_Syphon_1"
 #define PUPPET_PARADE_PATH_SYPHON_NAME "Dranimate_PuppetParadePath"
 
-#define DEFAULT_WINDOW_WIDTH 1440
-#define DEFAULT_WINDOW_HEIGHT 900
+#define DEFAULT_WINDOW_WIDTH 800
+#define DEFAULT_WINDOW_HEIGHT 600
 
 #define INITIAL_DISPLAY_OFFSET_X 50
 #define INITIAL_DISPLAY_OFFSET_Y 50
@@ -47,7 +47,7 @@ public:
     
     ofImage test;
     
-    bool drawTestImage;
+    bool drawTestImage = true;
     bool drawPuppetParadePath;
     bool drawGui = true;
     
