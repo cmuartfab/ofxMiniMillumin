@@ -39,7 +39,7 @@ void ofApp::setup(){
                             DEFAULT_WINDOW_HEIGHT - INITIAL_DISPLAY_OFFSET_Y);
     
     gui = new ofxDatGui( ofxDatGuiAnchor::TOP_RIGHT );
-    gui->setAutoDraw(true);
+    gui->setAutoDraw(false);
     gui->onButtonEvent(this, &ofApp::onButtonEvent);
     
     dir.setup();
@@ -72,7 +72,7 @@ void ofApp::serverRetired(ofxSyphonServerDirectoryEventArgs &arg){
 }
 
 void ofApp::update(){
-    
+    gui->update();
 }
 
 void ofApp::draw(){
