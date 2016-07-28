@@ -144,6 +144,7 @@ void ofApp::draw(){
 }
 
 void ofApp::drawGrid (int xPos, int yPos, int xDivs, int yDivs, int w, int h) {
+    ofSetLineWidth(2);
     for(int x = 0; x <= xDivs; x++) {
         ofDrawLine(xPos + (x * w / xDivs), yPos,
                    xPos + (x * w / xDivs), yPos + h);
@@ -152,6 +153,7 @@ void ofApp::drawGrid (int xPos, int yPos, int xDivs, int yDivs, int w, int h) {
         ofDrawLine(xPos,     yPos + (y * h / yDivs),
                    xPos + w, yPos + (y * h / yDivs));
     }
+    ofSetLineWidth(1);
 }
 
 void ofApp::keyPressed (int key) {
