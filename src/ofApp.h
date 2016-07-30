@@ -8,11 +8,11 @@
 #define PUPPET_STAGE_SYPHON_NAME "Dranimate_Syphon_1"
 #define PUPPET_PARADE_PATH_SYPHON_NAME "Dranimate_PuppetParadePath"
 
-#define DEFAULT_WINDOW_WIDTH 800
-#define DEFAULT_WINDOW_HEIGHT 600
+#define DEFAULT_WINDOW_WIDTH 1024
+#define DEFAULT_WINDOW_HEIGHT 768
 
-#define INITIAL_DISPLAY_OFFSET_X 50
-#define INITIAL_DISPLAY_OFFSET_Y 50
+#define INITIAL_DISPLAY_OFFSET_X 0
+#define INITIAL_DISPLAY_OFFSET_Y 0
 
 #define VERTEX_SELECT_THRESHOLD 50
 
@@ -72,5 +72,7 @@ public:
     bool rightKeyDown;
     bool downKeyDown;
     bool leftKeyDown;
+    
+    ofTrueTypeFont myfont;
     
 };

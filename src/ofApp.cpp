@@ -51,6 +51,9 @@ void ofApp::setup(){
     for(int i = 0; i < list.size(); i++) {
         ofLog() << list[i].serverName;
     }
+    
+    // Text
+    myfont.load("verdana.ttf", 14, true, true);
 }
 
 void ofApp::serverAnnounced(ofxSyphonServerDirectoryEventArgs &arg){
@@ -101,6 +104,8 @@ void ofApp::setHomCornerPos(int i, int x, int y) {
 
 void ofApp::draw(){
     
+   
+    
     ofBackground(0, 0, 0);
     ofColor(255, 255, 255, 255);
     ofEnableAlphaBlending();
@@ -148,10 +153,29 @@ void ofApp::drawGrid (int xPos, int yPos, int xDivs, int yDivs, int w, int h) {
     for(int x = 0; x <= xDivs; x++) {
         ofDrawLine(xPos + (x * w / xDivs), yPos,
                    xPos + (x * w / xDivs), yPos + h);
+        ofColor(255,255,255);
+        myfont.drawString(ofToString(x),
+                          xPos + (x * w / xDivs) , yPos );
+        // numbers along the top
+        myfont.drawString(ofToString(x),
+                          xPos + (x * w / xDivs)  + 10, yPos + 20);
+        
+        // numbers along the bottom
+        myfont.drawString(ofToString(x),
+                          xPos + (x * w / xDivs), yPos + h - 5);
     }
     for(int y = 0; y <= yDivs; y++) {
         ofDrawLine(xPos,     yPos + (y * h / yDivs),
                    xPos + w, yPos + (y * h / yDivs));
+    
+    // numbers along the left
+        myfont.drawString(ofToString(y),
+                          xPos + 5,     yPos + (y * h / yDivs) - 5 );
+      
+    // numbers along the right
+        myfont.drawString(ofToString(y),
+                          xPos + w - 30, yPos + (y * h / yDivs) - 5);
+        
     }
     ofSetLineWidth(1);
 }
