@@ -137,7 +137,7 @@ void ofApp::draw(){
         ofDrawCircle(v.x, v.y, SELECTED_VERTEX_CIRCLE_SIZE);
     }
     
-    if(drawGui) {
+    if(drawTestImage) {
         gui->draw();
     }
     
@@ -174,17 +174,11 @@ void ofApp::keyPressed (int key) {
 
     /* Toggle show test image */
     if (key == 't') {
-        if(!drawTestImage) {
-            drawTestImage = true;
-            drawPuppetParadePath = false;
-        } else {
-            drawTestImage = false;
-            drawPuppetParadePath = false;
-        }
+        drawTestImage = !drawTestImage;
     }
     
     /* Toggle show parade path */
-    if (key == 'p') {
+    /*if (key == 'p') {
         if(!drawPuppetParadePath) {
             drawPuppetParadePath = true;
             drawTestImage = false;
@@ -192,11 +186,11 @@ void ofApp::keyPressed (int key) {
             drawPuppetParadePath = false;
             drawTestImage = false;
         }
-    }
+    }*/
     
     /* Toggle draw GUI */
     if (key == 'g') {
-        drawGui = !drawGui;
+        //drawGui = !drawGui;
     }
     
     /* Keys for controlling corners */
